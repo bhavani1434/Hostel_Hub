@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Image Change</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Segoe UI, Roboto, sans-serif; /* Fonts commonly used in Windows 11 */
+        }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .product-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-div-left {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .img-container {
+            margin-bottom: 20px;
+        }
+
+        #mainImage {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .hover-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .hover-container div img {
+            width: 80px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-div-right {
+            flex: 1;
+            padding: 20px;
+            margin-top: 20px; /* Add margin-top to create space between the room sharing details and the address */
+        }
+
+        .product-name {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .btn-groups {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-cart-btn, .buy-now-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .add-cart-btn:hover, .buy-now-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cart display styles */
+        .cart-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            display: none;
+            z-index: 9999;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .back-btn {
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Adjust as needed */
+    padding: 5px 10px; /* Adjust padding as needed */
+     /* Example border style */
+    border-radius: 5px; /* Example border radius */
+    background-color:   #007bff; /* Example background color */
+    color:white; /* Example text color */
+}
+
+.back-btn:hover {
+    background-color:  #0056b3 /* Example hover background color */
+}
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="product-div">
+            <div class="product-div-left">
+                <div class="img-container">
+                    <img id="mainImage" src="img7.jpeg" alt="watch">
+                </div>
+                <div class="hover-container" id="hoverContainer">
+                    <div><img src="img1.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img2.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img3.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img5.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img8.jpeg" onclick="changeImage(this.src)"></div>
+                </div>
+            </div>
+            <div class="product-div-right">
+                <span class="product-name">Asian Deluxe Boys Hostel</span>
+                <span class="product-price">4,000/- per month</span>
+                <div class="product-rating" style="margin-bottom: 10px;">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star-half-alt"></i></span>
+                    <span>(350 ratings)</span>
+                </div>
+                <h2>About Hostel</h2>
+                <ul class="product-services">
+                    <li>Shared dormitories</li>
+                    <li>Homely food </li>
+                    <li>Free Wi-Fi</li>
+                    <li>Attached Wash Rooms</li>
+                    <li>24/7 reception</li>
+                    <li>Laundry facilities</li>
+                    <li>Comfortable Room</li>
+                    <!-- Add more services as needed -->
+                </ul>
+                <h3>Room Sharing Details</h3>
+                <ul class="room-sharing-details">
+                    <li>General Rooms: 4000/- per month</li>
+                    <li>3 Sharing: 5000/- per month</li>
+                    <li>2 Sharing: 7000/-per month </li>
+                    <!-- Add more room sharing details as needed -->
+                </ul>
+                <p style="font-weight: bold; color: #333;">Address: Lotus Pond, 564-A/32, Road No. 86, near MGM Pharma, MLA Colony, Banjara Hills, Hyderabad, Telangana 500096</p>
+                <p>Phone: <a href="tel:07879141430">078791 41430</a></p>
+            </div>
+        </div>
+        <div class="btn-groups">
+            <button type="button" class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+            <a href="sms:9390795793" class="buy-now-btn"><i class="fas fa-phone"></i>Request a Call Back</a>
+            <a href="file.html" class="buy-now-btn back-btn"><i class="fas fa-arrow-left"></i>Back</a>
+        </div>
+    </div>
+</div>
+
+<div class="cart-container" id="cartContainer">
+    <!-- Cart content will be displayed here -->
+</div>
+
+<script>
+    // Function to add hostel to the cart
+    function addToCart() {
+        // Hostel information
+        var hostel = {
+            name: "Kygo Hostel",
+            price: "4,000/- per month"
+            // Add more details if needed
+        };
+        // Check if cart already exists in localStorage
+        var cart = localStorage.getItem("cart");
+        if (!cart) {
+            // If cart doesn't exist, create an empty array
+            cart = [];
+        } else {
+            // If cart exists, parse it from JSON
+            cart = JSON.parse(cart);
+        }
+
+        // Add hostel to the cart
+        cart.push(hostel);
+
+        // Update localStorage with the new cart
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Update the cart display
+        displayCart();
+    }
+
+    // Function to display the cart
+    function displayCart() {
+        // Get the cart container
+        var cartContainer = document.getElementById("cartContainer");
+
+        // Clear the cart container
+        cartContainer.innerHTML = "";
+
+        // Get the cart items from localStorage
+        var cart = JSON.parse(localStorage.getItem("cart"));
+
+        // If cart is not empty, display each item
+        if (cart && cart.length > 0) {
+            cart.forEach(function(item) {
+                // Create a new cart item element
+                var cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.textContent = item.name + " - " + item.price;
+                // Append the cart item to the cart container
+                cartContainer.appendChild(cartItem);
+            });
+        } else {
+            // If cart is empty, display a message
+            cartContainer.textContent = "Cart is empty";
+        }
+
+        // Show the cart container
+        cartContainer.style.display = "block";
+    }
+</script>
+</body>
+</html>
+

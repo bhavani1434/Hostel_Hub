@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Finder</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        /* Add your CSS styles here */
+        .wishlist-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .wishlist-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <a href="#" class="logo logo-left">
+            <img src="logo11.jpeg" alt="Hostel Hub" style="width: 150px; height: auto;">
+        </a>
+        <h3 class="hostel-hub">
+            <img src="logorigh2.jpeg" alt="Hostel Hub" style="width: 150px; height: auto;">
+        </h3>
+        <!-- Wishlist Icon -->
+        <a href="#" class="wishlist-link" onclick="openWishlist()">
+            <img src="wishlist.png" alt="Wishlist Icon" style="width: 70px; height: 70px;">
+        </a>
+    </header>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="wishlist-modal">
+        <div class="wishlist-content">
+            <h2>Your Wishlist</h2>
+            <!-- Wishlist items will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Add your JavaScript code here -->
+    <script>
+        // Function to open the wishlist modal
+        function openWishlist() {
+            var modal = document.getElementById("wishlistModal");
+            modal.style.display = "block";
+        }
+    </script>
+</body>
+</html>

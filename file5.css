@@ -1,0 +1,115 @@
+/* Navigation Bar */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    padding: 10px 20px;
+  }
+  
+  .navbar img {
+    height: 50px;
+    width: auto;
+    float: left;
+  }
+  
+  .search-bar {
+    float: left;
+    margin-left: 20px;
+  }
+  
+  .search-bar input[type=text] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-to-wishlist {
+    float: right;
+  }
+  
+  .add-to-wishlist img {
+    height: 30px;
+    width: auto;
+    margin-left: 10px;
+  }
+  
+  /* Hostel Section */
+  .hostel-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .hostel-card {
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .hostel-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .hostel-details {
+    padding: 10px 0;
+  }
+  
+  .hostel-details h3 {
+    margin: 5px 0;
+  }
+  
+  .hostel-details p {
+    margin: 5px 0;
+  }
+  
+  .add-to-wishlist-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Wishlist */
+  .wishlist-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 999;
+  }
+  
+  .wishlist-item {
+    margin-bottom: 10px;
+  }
+  
+  .wishlist-item button {
+    margin-left: 10px;
+  }
+  
+  /* Filters */
+  .filter-section {
+    margin-top: 20px;
+  }
+  
+  .filter-section select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  

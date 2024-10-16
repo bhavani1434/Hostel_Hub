@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Hostel Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Segoe UI, Roboto, sans-serif; /* Fonts commonly used in Windows 11 */
+        }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .product-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-div-left {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .img-container {
+            margin-bottom: 20px;
+        }
+
+        #mainImage {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .hover-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .hover-container div img {
+            width: 80px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-div-right {
+            flex: 1;
+            padding: 20px;
+            margin-top: 20px; /* Add margin-top to create space between the room sharing details and the address */
+        }
+
+        .product-name {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .btn-groups {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-cart-btn, .buy-now-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .add-cart-btn:hover, .buy-now-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cart display styles */
+        .cart-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            display: none;
+            z-index: 9999;
+        }
+
+        .edit-btn {
+            background-color: #f0f0f0; /* Light color */
+            color: #333; /* Text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        .edit-btn:hover {
+            background-color: #ddd; /* Darker shade on hover */
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .back-btn {
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Adjust as needed */
+            padding: 5px 10px; /* Adjust padding as needed */
+            /* Example border style */
+            border-radius: 5px; /* Example border radius */
+            background-color:   #007bff; /* Example background color */
+            color:white; /* Example text color */
+        }
+
+        .back-btn:hover {
+            background-color:  #0056b3; /* Example hover background color */
+        }
+
+        /* Form styles */
+        .edit-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .edit-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .edit-form input[type="text"], .edit-form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .edit-form input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .edit-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="product-div">
+            <div class="product-div-left">
+                <div class="img-container">
+                    <img id="mainImage" src="img7.jpeg" alt="watch">
+                </div>
+                <div class="hover-container" id="hoverContainer">
+                    <div><img src="img1.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img2.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img3.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img5.jpeg" onclick="changeImage(this.src)"></div>
+                    <div><img src="img8.jpeg" onclick="changeImage(this.src)"></div>
+                </div>
+            </div>
+            <div class="product-div-right">
+                <span class="product-name">Abhishrey Hostel</span>
+                <span class="product-price">4,000/- per month</span>
+                <div class="product-rating" style="margin-bottom: 10px;">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star-half-alt"></i></span>
+                    <span>(350 ratings)</span>
+                </div>
+                <h2>About Hostel</h2>
+                <ul class="product-services service-list">
+                    <li>Shared dormitories</li>
+                    <li>Homely food </li>
+                    <li>Free Wi-Fi</li>
+                    <li>Attached Wash Rooms</li>
+                    <li>24/7 reception</li>
+                    <li>Laundry facilities</li>
+                    <li>Comfortable Room</li>
+                    <!-- Add more services as needed -->
+                </ul>
+                <h3>Room Sharing Details</h3>
+                <ul class="room-sharing-details service-list">
+                    <li>General Rooms: <span id="generalRoomAvailability">Available</span>, Price: <span id="generalRoomPrice">4,000/- per month</span>, Number: <span id="generalRoomNumber">5</span></li>
+                    <li>3 Sharing: <span id="threeSharingAvailability">Available</span>, Price: <span id="threeSharingPrice">5,000/- per month</span>, Number: <span id="threeSharingNumber">3</span></li>
+                    <li>2 Sharing: <span id="twoSharingAvailability">Available</span>, Price: <span id="twoSharingPrice">7,000/-per month</span>, Number: <span id="twoSharingNumber">2</span></li>
+                    <!-- Add more room sharing details as needed -->
+                </ul>
+                <p style="font-weight: bold; color: #333;">Address: Lotus Pond, 564-A/32, Road No. 86, near MGM Pharma, MLA Colony, Banjara Hills, Hyderabad, Telangana 500096</p>
+                <p>Phone: <a href="tel:07879141430">078791 41430</a></p>
+            </div>
+        </div>
+
+        <!-- Edit Form -->
+        <div class="edit-form">
+            <h2>Edit Hostel Details</h2>
+            <form id="editForm" onsubmit="saveChanges(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" required>
+                <h3>Services:</h3>
+                <ul id="servicesList" class="service-list">
+                    <!-- Services will be dynamically added here -->
+                </ul>
+                <label for="generalRoomAvailability">General Room Availability:</label>
+                <input type="radio" id="generalRoomAvailable" name="generalRoomAvailability" value="Available" checked>
+                <label for="generalRoomAvailable">Available</label>
+                <input type="radio" id="generalRoomNotAvailable" name="generalRoomAvailability" value="Not Available">
+                <label for="generalRoomNotAvailable">Not Available</label>
+                <label for="generalRoomPrice">General Room Price:</label>
+                <input type="text" id="generalRoomPrice" name="generalRoomPrice" required>
+                <label for="generalRoomNumber">General Room Number:</label>
+                <input type="number" id="generalRoomNumber" name="generalRoomNumber" required>
+                <label for="threeSharingAvailability">3 Sharing Room Availability:</label>
+                <input type="radio" id="threeSharingAvailable" name="threeSharingAvailability" value="Available" checked>
+                <label for="threeSharingAvailable">Available</label>
+                <input type="radio" id="threeSharingNotAvailable" name="threeSharingAvailability" value="Not Available">
+                <label for="threeSharingNotAvailable">Not Available</label>
+                <label for="threeSharingPrice">3 Sharing Room Price:</label>
+                <input type="text" id="threeSharingPrice" name="threeSharingPrice" required>
+                <label for="threeSharingNumber">3 Sharing Room Number:</label>
+                <input type="number" id="threeSharingNumber" name="threeSharingNumber" required>
+                <label for="twoSharingAvailability">2 Sharing Room Availability:</label>
+                <input type="radio" id="twoSharingAvailable" name="twoSharingAvailability" value="Available" checked>
+                <label for="twoSharingAvailable">Available</label>
+                <input type="radio" id="twoSharingNotAvailable" name="twoSharingAvailability" value="Not Available">
+                <label for="twoSharingNotAvailable">Not Available</label>
+                <label for="twoSharingPrice">2 Sharing Room Price:</label>
+                <input type="text" id="twoSharingPrice" name="twoSharingPrice" required>
+                <label for="twoSharingNumber">2 Sharing Room Number:</label>
+                <input type="number" id="twoSharingNumber" name="twoSharingNumber" required>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Add the new button below -->
+        <div class="btn-groups">
+            <button type="button" class="edit-btn" onclick="showEditForm()">Edit</button>
+        </div>
+
+        <div class="btn-groups">
+            <button type="button" class="add-cart-btn" onclick="addToWishlist()">Add to Cart</button>
+            <a href="sms:9390795793" class="buy-now-btn"><i class="fas fa-phone"></i>Request a Call Back</a>
+            <a href="final.html" class="buy-now-btn back-btn"><i class="fas fa-arrow-left"></i>Back</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to add hostel to the cart and wishlist
+    function addToWishlist() {
+        var hostel = {
+            name: "Abhishrey Hostel",
+            location: "Secunderabad",
+            price: "4,000/- per month"
+        };
+
+        var wishlist = localStorage.getItem("wishlist");
+        if (wishlist) {
+            wishlist = JSON.parse(wishlist);
+            var hostelExists = wishlist.some(item => item.name === hostel.name);
+            if (hostelExists) {
+                alert("This hostel is already added to wishlist");
+                return;
+            }
+        } else {
+            wishlist = [];
+        }
+
+        wishlist.push(hostel);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        alert("Hostel added to wishlist successfully");
+    }
+
+    // Function to show the edit form
+    function showEditForm() {
+        var editForm = document.querySelector('.edit-form');
+        editForm.style.display = 'block';
+
+        // Populate form fields with current hostel details
+        document.getElementById('name').value = 'Abhishrey Hostel';
+        document.getElementById('location').value = 'Secunderabad';
+        document.getElementById('price').value = '4,000/- per month';
+
+        // Populate room details
+        document.getElementById('generalRoomPrice').value = '4,000/- per month';
+        document.getElementById('generalRoomNumber').value = 5;
+        document.getElementById('threeSharingPrice').value = '5,000/- per month';
+        document.getElementById('threeSharingNumber').value = 3;
+        document.getElementById('twoSharingPrice').value = '7,000/- per month';
+        document.getElementById('twoSharingNumber').value = 2;
+
+        // Populate services dynamically
+        var services = ["Shared dormitories", "Homely food", "Free Wi-Fi", "Attached Wash Rooms", "24/7 reception", "Laundry facilities", "Comfortable Room"];
+        var servicesList = document.getElementById('servicesList');
+        servicesList.innerHTML = "";
+        services.forEach(service => {
+            var li = document.createElement('li');
+            li.textContent = service;
+            servicesList.appendChild(li);
+        });
+    }
+
+    // Function to save changes made in the edit form
+    function saveChanges(event) {
+        event.preventDefault();
+
+        // Get updated values from form
+        var newName = document.getElementById('name').value;
+        var newLocation = document.getElementById('location').value;
+        var newPrice = document.getElementById('price').value;
+
+        // Update hostel details
+        document.querySelector('.product-name').textContent = newName;
+        document.querySelector('.product-price').textContent = newPrice;
+
+        // Hide the edit form
+        document.querySelector('.edit-form').style.display = 'none';
+
+        // Optionally, you can save the changes to localStorage or send them to a server
+    }
+</script>
+
+</body>
+</html>

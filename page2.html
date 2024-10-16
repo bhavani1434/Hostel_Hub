@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="style2.css">
+   <style>
+      /* Add your CSS styles here */
+      .dropdown-content {
+          display: none; /* Initially hide the dropdown content */
+      }
+      .dropdown .btn {
+         margin: 0 100px 10 0;;
+      }
+  </style>
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> HOSTEL </a>
+
+      <nav class="navbar">
+         <a href="#home">Home</a>
+         <a href="#about">About</a>
+         <a href="#room">Services</a>
+         <a href="#gallery">Gallery</a>
+         <a href="#review">Reviews</a>
+         <a href="#faq">Faqs</a>
+         <div class="dropdown">
+            <button class="btn" id="searchButton">Search</button>
+            <div class="dropdown-content" id="dropdownContent">
+               <a href="signup1.php">User login</a>
+               <a href="hostel_login.php">Hostel Owner login</a>
+            </div>
+         </div>
+      </nav>
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+      <div class="swiper home-slider">
+
+         <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide" style="background: url(img9.jpeg) no-repeat;">
+               <div class="content">
+                  <h3>Home Away From Home</h3>
+                  <a href="#" class="btn"> visit our offer</a>
+               </div>
+            </div>
+            
+
+            <div class="swiper-slide slide" style="background: url(img10.jpeg) no-repeat;">
+               <div class="content">
+                  <h3>Home Away From Home</h3>
+                  <a href="#" class="btn"> visit our offer</a>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide" style="background: url(img7.jpeg) no-repeat;">
+               <div class="content">
+                  <h3>Home Away From Home</h3>
+                  <a href="#" class="btn"> visit our offer</a>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide" style="background: url(img8.jpeg) no-repeat;">
+               <div class="content">
+                  <h3>Home Away From Home</h3>
+                  <a href="#" class="btn"> visit our offer</a>
+               </div>
+            </div>
+            <div class="swiper-slide slide" style="background: url(img11.jpeg) no-repeat;">
+              <div class="content">
+                 <h3>Home Away From Home</h3>
+                 <a href="#" class="btn"> visit our offer</a>
+              </div>
+           </div>
+           <div class="swiper-slide slide" style="background: url(review2.jpeg) no-repeat;">
+            <div class="content">
+               <h3>Home Away From Home</h3>
+               <a href="#" class="btn"> visit our offer</a>
+            </div>
+         </div>
+         <div class="swiper-slide slide" style="background: url(review6.jpeg) no-repeat;">
+          <div class="content">
+             <h3>Home Away From Home</h3>
+             <a href="#" class="btn"> visit our offer</a>
+          </div>
+       </div>
+
+         </div>
+
+         <div class="swiper-button-next"></div>
+         <div class="swiper-button-prev"></div>
+
+      </div>
+
+   </section>
+
+  
+
+   <section class="about" id="about">
+
+      <div class="row">
+
+         <div class="image">
+            <img src="hos.jpeg" alt="">
+         </div>
+
+         <div class="content">
+            <h3>ABOUT US</h3>
+            <p>Our hostel booking app makes finding accommodation easy for students and working folks. It's user-friendly, showing you all the info you need about hostels – services, fees, and safety. We use top-notch tech to keep things reliable and secure. Our goal is simple: to make booking a hostel straightforward and trustworthy. </p>
+            <p>      Our hostel booking app is like a helpful friend for finding a place to stay. It's super easy to use, showing you all the important stuff about hostels – what they offer, how much it costs, and how safe they are. We're here to change how you discover and book hassle-free accommodation. Join us in a new way of finding your perfect stay – where everything you need is at your fingertips!</p>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- end -->
+  <section id="services">
+   <div class="services container">
+     <div class="service-top">
+       <h1 class="section-title">Services</h1>
+       <p> We ensure a seamless experience with secure payments, reliable information on the best rooms, and 24/7 customer support. Explore diverse accommodations, access transparent details about locations, and embark on worry-free travels with our user-friendly platform, making your booking process trustworthy and stress-free</p>
+     </div>
+     <div class="service-bottom">
+       <div class="service-item">
+         <div class="icon"><img src="https://www.shutterstock.com/shutterstock/photos/1146349049/display_1500/stock-vector-secure-payment-icon-ssl-encryption-transaction-safe-pay-money-vector-1146349049.jpg" /></div>
+         <h2>Reliable and Secure Payments</h2>
+         <p>Your financial transactions are safeguarded, ensuring a trustworthy and worry-free booking process.</p>
+       </div>
+       <div class="service-item">
+         <div class="icon"><img src="logo.jpg" /></div>
+         <h2>Smart Stays,Savy Prices</h2>
+         <p>Dive into our spectrum of accommodations, from budget-friendly to deluxe havens.</p>
+       </div>
+       <div class="service-item">
+         <div class="icon"><img src="map.jpg" /></div>
+         <h2>Find us easily with Google Maps</h2>
+         <p>Just click on the map link on our hostel pages to get clear directions and explore the neighborhood.</p>
+       </div>
+       <div class="service-item">
+         <div class="icon"><img src="support.jpg" /></div>
+         <h2>24/7 Customer Support</h2>
+         <p>You will get support around the clock, ensuring a reliable and responsive customer service.</p>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End Service Section -->
+
+   <!-- room -->
+
+
+  
+
+   <!-- gallery -->
+
+   <section class="gallery" id="gallery">
+
+      <h1 class="heading">our gallery</h1>
+
+      <div class="swiper gallery-slider">
+
+         <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+               <img src="img10.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="img8.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="img11.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="img7.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="img10.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="img11.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            <div class="swiper-slide slide">
+               <img src="img1.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            <div class="swiper-slide slide">
+               <img src="img2.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            <div class="swiper-slide slide">
+               <img src="img10.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            <div class="swiper-slide slide">
+               <img src="img6.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            <div class="swiper-slide slide">
+               <img src="img4.jpeg" alt="">
+               <div class="icon">
+                  <i class="fas fa-magnifying-glass-plus"></i>
+               </div>
+            </div>
+            
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- end -->
+
+   <!-- review -->
+
+   <section class="review" id="review">
+
+      <div class="swiper review-slider">
+         <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p><b>"Fantastic Experience!"</b>:"From the cozy rooms to the excellent customer service, my stay at this hostel was fantastic. The secure payment process and 24/7 support added to the peace of mind. Highly recommended!"</p>
+               <div class="user">
+                  <img src="review1.jpeg" alt="">
+                  <div class="user-info">
+                     <h3>Rahul</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p><b>"Affordable Luxury":</b>"This app is a gem! It offers the best of both worlds – budget-friendly prices and deluxe rooms. The Smart Stays, Savvy Prices slogan truly fits. Great find for students!"</p>
+               <div class="user">
+                  <img src="review2.jpeg" alt="">
+                  <div class="user-info">
+                     <h3>Keerthi</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p><br> "Convenient and Safe":</b>"Locating hostels has never been easier. Thanks to Google Maps integration, I found my way effortlessly. The app's commitment to reliable information and secure payments made my stay worry-free."</p>
+               <div class="user">
+                  <img src="review4.jpeg" alt="">
+                  <div class="user-info">
+                     <h3>Sandeep</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p>"Home Away from Home"</p>
+                 <p>"The hostel booking app truly delivers a 'home away from home' experience. With diverse accommodations, secure payments, and 24/7 support, it's become my go-to for hassle-free stays."</p>
+               <div class="user">
+                  <img src="review5.jpg" alt="">
+                  <div class="user-info">
+                     <h3>Harika</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p><b>"Visual Treat in the Gallery":</b>"The gallery feature is a visual treat! High-resolution images and the magnifying glass icon make it easy to explore hostels virtually. A great addition to ensure transparency and confidence in booking."</p>
+               <div class="user">
+                  <img src="review6.jpeg" alt="">
+                  <div class="user-info">
+                     <h3>Ravi</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <h2 class="heading">client's review</h2>
+               <i class="fas fa-quote-right"></i>
+               <p><b>"Smart and Savvy Choices":</b>"The app's tagline holds true – smart stays at savvy prices! It's refreshing to have a range of accommodations that cater to different preferences while keeping it affordable. A smart choice for savvy travelers!"</p>
+               <div class="user">
+                  <img src="review7.jpg" alt="">
+                  <div class="user-info">
+                     <h3>Ravi</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+
+   </section>
+
+   <!-- end -->
+
+   <!-- faq -->
+
+   <section class="faqs" id="faq">
+
+      <h1 class="heading">frequently asked questions</h1>
+
+      <div class="row">
+
+         <div class="image">
+            <img src="faq5.jpeg" alt="">
+         </div>
+
+         <div class="content">
+
+            <div class="box active">
+               <h3>How do I book a hostel using this website?</h3>
+               <p>Booking a hostel is easy! Simply navigate to the 'Book Now' section, select your preferred dates and room type, and proceed to secure payment. Follow the prompts to confirm your reservation.</p>
+            </div>
+
+            <div class="box">
+               <h3>Are my payments secure on this website?</h3>
+               <p>Absolutely. We use secure payment gateways to ensure the safety of your transactions. Your financial information is encrypted, providing a secure and reliable booking experience.</p>
+            </div>
+
+            <div class="box">
+               <h3>Can I see images of the hostel rooms before booking?</h3>
+               <p>Yes! Explore our 'Gallery' section, where you'll find high-quality images of each hostel. Click on the magnifying glass icon to zoom in and get a closer look at the details</p>
+            </div>
+
+            <div class="box">
+               <h3>What types of accommodations are available?</h3>
+               <p>Our platform offers a range of accommodations, from budget-friendly options to deluxe rooms. We aim to provide diverse choices to suit every preference and budget.</p>
+            </div>
+
+            <div class="box">
+               <h3>How do I know the location of the hostel I'm booking?</h3>
+               <p>We've integrated Google Maps for your convenience. Click on the map link on each hostel page to get clear directions and explore the surrounding neighborhood.</p>
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- end -->
+
+   <!-- reservation -->
+
+ 
+
+   <!-- end -->
+
+   <!-- footer -->
+
+   <section class="footer">
+
+      <div class="box-container">
+
+         <div class="box">
+            <h3>contact info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +9140694966 </a>
+            <a href="#"> <i class="fas fa-phone"></i> 9654726959</a>
+            <a href="#"> <i class="fas fa-envelope"></i> homeawayfromhome@gmail.com</a>
+            <a href="#"> <i class="fas fa-map"></i> Hyderbad</a>
+         </div>
+
+         <div class="box">
+            <h3>quick links</h3>
+            <a href="#home"> <i class="fas fa-arrow-right"></i> home</a>
+            <a href="#about"> <i class="fas fa-arrow-right"></i> about</a>
+            <a href="#room"> <i class="fas fa-arrow-right"></i> services</a>
+            <a href="#gallery"> <i class="fas fa-arrow-right"></i> gallery</a>
+            <a href="#review"> <i class="fas fa-arrow-right"></i> reviews</a>
+            <a href="#faq"> <i class="fas fa-arrow-right"></i> faqs</a>
+
+         </div>
+
+      </div>
+
+      <div class="share">
+         <a href="#" class="fab fa-facebook-f"></a>
+         <a href="#" class="fab fa-instagram"></a>
+         <a href="#" class="fab fa-twitter"></a>
+         <a href="#" class="fab fa-pinterest"></a>
+      </div>
+
+      <div class="credit">&copy; copyright @ 2024 by <span>Bhavani,Thanusha</span></div>
+
+   </section>
+
+   <!-- end -->
+   <script>
+      // Add your JavaScript code here
+      document.getElementById("searchButton").addEventListener("click", function() {
+          var dropdownContent = document.getElementById("dropdownContent");
+          if (dropdownContent.style.display === "none") {
+              dropdownContent.style.display = "block"; // Show dropdown content
+          } else {
+              dropdownContent.style.display = "none"; // Hide dropdown content
+          }
+      });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+   
+
+   <script src="script2.js"></script>
+   
+
+
+</body>
+</html>

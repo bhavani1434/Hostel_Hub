@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    
+    <!-- Add your CSS styles here -->
+    <style>
+        /* Additional styles for the logos */
+        .logo-left,
+        .logo-right {
+            position: absolute;
+            left: 100px;
+            width: 500px;
+            top: 10px;
+            width: 200px;
+            color: white; /* Added for better visibility */
+        }
+
+        .logo-left img{
+            left: 100px;
+            width: 500px;
+        }
+
+        .logo-right img{
+            right: 100px;
+            width: 1000px;
+        }
+        .hostel-hub img {
+        width: 200px; /* Adjust the width as needed */
+        }
+
+
+        /* Additional styles for the header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: lightblue;
+            background-image: url(''); /* Add your background image URL here */
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center; 
+            justify-content: space-between;
+            padding: 0rem 8%;
+            color: var(--white);
+        }
+        .wishlist-heading {
+            background-color: lightpink;
+            padding: 20px 40px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .wishlist-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-1%, -50%);
+            width: 850px;
+            height: 1200px;
+            padding: 1px;
+            background-color: rgb(242, 226, 226);
+            border: 1px solid #888;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+        .wishlist-content{
+            background-color: white;
+            margin: 10%auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 700px;
+            height: 900px;
+            width: 80%;     
+            text-align: center;   
+            font-size: 24px; 
+        }
+        .wishlist-items-container {
+            padding: 10px; /* Add padding as needed */
+            max-height: 600px; /* Add max-height to enable scrolling */
+            overflow-y: auto; /* Enable vertical scrolling if needed */
+            font-size: 24px;
+        }
+        .hostel-table {
+            width: 100%; /* Set table width to fill its container */
+            border-collapse: collapse; /* Collapse table borders */
+            margin-top: 20px; /* Add some space between the table and other elements */
+        }
+
+/* Style for table headers */
+        .hostel-table th {
+            background-color: #f2f2f2; /* Set background color for table headers */
+            padding: 8px; /* Add padding to table headers */
+            text-align: left; /* Align text to the left within table headers */
+            border-bottom: 1px solid #ddd; /* Add bottom border to separate headers from table rows */
+        }
+
+/* Style for table cells */
+        .hostel-table td {
+            padding: 8px; /* Add padding to table cells */
+            border-bottom: 1px solid #ddd; /* Add bottom border to separate table rows */
+        }
+
+/* Style for alternate table rows */
+        .hostel-table tr:nth-child(even) {
+            background-color: #f2f2f2; /* Set background color for alternate table rows */
+        }
+
+
+        .close-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 24px;
+            font-size: 30px;
+            background: color blue; /* Adjust button background color as needed */
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition:background-color 0.3s ease;
+        }
+        .close-button:hover {
+            background-color: #add8e6; /* Adjust hover background color as needed */
+        }
+        
+
+        /* Additional styles for the search bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-top: 20px; /* Add some margin to the top */
+            margin-bottom: 20px; /* Add some margin to the bottom */
+            margin-left: 300px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 0.7rem 1rem;
+            font-size: 1.6rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            margin-right: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0.7rem 1.5rem;
+            font-size: 1.6rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Additional styles for the content */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            color: #333; /* Added for better visibility */
+            background-color: #f2f2f2; /* Set background color */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 200px; /* Add more margin to create space */
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 3rem;
+        }
+
+        .filters {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        #hostels {
+            text-align: center;
+        }
+
+        .hostel {
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block; /* Display hostels beside each other */
+            width: 250px; /* Set width for each hostel card */
+            margin: 0 10px; /* Add some margin between hostels */
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hostel:hover {
+            transform: translateY(-5px);
+        }
+
+        .hostel img {
+            width: 100%;
+            height: 250px; /* Increased image height */
+            object-fit: cover;
+        }
+
+        .hostel:hover img {
+            transform: scale(1.1);
+        }
+
+        .details {
+            padding: 1rem;
+        }
+
+        .details p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Styles for star icons */
+        .fa-star {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <a href="#" class="logo logo-left">
+            <img src="logo11.jpeg" alt="Hostel Hub" style="width: 150px; height: auto;">
+        </a>
+        <h3 class="hostel-hub">
+            <img src="logorigh2.jpeg" alt="Hostel Hub" style="width: 150px; height: auto;">
+        </h3>
+        <nav class="navbar">
+            <a href="#" class="wishlist-link" onclick="openWishlist()">
+                <img src="wishlist.png" alt="Wishlist Icon" style="width: 70px; height: 70px;">
+            </a>
+            
+        </nav>
+    
+    </header>
+    <div id="wishlistModal" class="wishlist-modal">
+        <div class="wishlist-content">
+            <h2 class="wishlist-heading">Your Wishlist</h2>
+            <div class="wishlist-items-container"></div> <!-- Container for wishlist items -->
+            <!-- Wishlist items will be displayed here -->
+            
+
+        </div>
+        <button id="closeButton" class="close-button">Close</button>
+        
+    </div>
+
+    <div class="container">
+        <h2>Filters</h2>
+        <div class="filters">
+            <label for="cost-range">Cost Range:</label>
+            <input type="range" id="cost-range" min="1000" max="10000" step="500" value="5000">
+            <span id="cost-value"></span>
+        </div>
+        <div class="filters">
+            <label for="location-select">Select Location:</label>
+            <select id="location-select">
+                <option value="all">All Locations</option>
+                <option value="Banjara Hills">Banjara Hills</option>
+                <option value="Uppal">Uppal</option>
+                <option value="Secunderabad">Secunderabad</option>
+                <option value="HITEC City">HITEC City</option>
+                <option value="Kukatpally">Kukatpally</option>
+                <option value="Durgam Cheruvu">Durgam Cheruvu</option>
+                <option value="Narayanaguda">Narayanaguda</option>
+                <option value="Koti">Koti</option>
+                <option value="Madhapur">Madhapur</option>
+            </select>
+        </div>
+        <div id="hostels"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const costRange = document.getElementById('cost-range');
+            const costValue = document.getElementById('cost-value');
+            const hostelsContainer = document.getElementById('hostels');
+            const searchInput = document.getElementById('searchInput');
+            const locationSelect = document.getElementById('location-select');
+    
+            costValue.textContent = costRange.value;
+    
+            costRange.addEventListener('input', function () {
+                costValue.textContent = this.value;
+                filterHostels();
+            });
+    
+            searchInput.addEventListener('input', function () {
+                filterHostels();
+            });
+    
+            locationSelect.addEventListener('change', function () {
+                filterHostels();
+            });
+    
+            function filterHostels() {
+                const cost = parseInt(costRange.value);
+                const searchString = searchInput.value.toLowerCase();
+                const selectedLocation = locationSelect.value;
+                const hostelData = [
+                    { name: "ARYA BOYS HOSTEL", image: "img1.jpeg", cost: 2000, stars: 3, location: "Banjara Hills", reviews: ["Good location", "Friendly staff"] },
+                    { name: "Sri Sai Durga Deluxe Boys Hostel", image: "img2.jpeg", cost: 3500, stars: 4, location: "Uppal", reviews: ["Quiet and peaceful", "Clean rooms"] },
+                    { name: "Asian Deluxe Boys Hostel", image: "img3.jpeg", cost: 5000, stars: 2, location: "Banjara Hills", reviews: ["Noisy at night", "Uncomfortable beds"] },
+                    { name: "Vaibhav Hostel", image: "img1.jpeg", cost: 2000, stars: 3, location: "Banjara Hills", reviews: ["Good location", "Friendly staff"] },
+                    { name: "Sai Tirumala Women's Hostel", image: "img2.jpeg", cost: 3500, stars: 4, location: "Uppal", reviews: ["Quiet and peaceful", "Clean rooms"] },
+                    { name: "Kygo Hostel", image: "img3.jpeg", cost: 5000, stars: 2, location: "Banjara Hills", reviews: ["Noisy at night", "Uncomfortable beds"] },
+                    { name: "Youth Hostel", image: "img4.jpeg", cost: 4000, stars: 5, location: "Secunderabad", reviews: ["Amazing views", "Luxurious rooms"] },
+                    { name: "Vjaya Hostel", image: "img5.jpeg", cost: 2500, stars: 3, location: "HITEC City", reviews: ["Breathtaking scenery", "Cozy atmosphere"] },
+                    { name: "MCR Super Deluxe Girls Hostel", image: "img6.jpeg", cost: 3000, stars: 4, location: "Kukatpally", reviews: ["Peaceful environment", "Excellent service"] },
+                    { name: "Padmavathi Girls Hostel", image: "img8.jpeg", cost: 2800, stars: 4, location: "Durgam Cheruvu", reviews: ["Tranquil surroundings", "Comfortable beds"] },
+                    { name: "Green Homes Hostel", image: "img9.jpeg", cost: 4500, stars: 3, location: "Madhapur", reviews: ["Rich cultural experience", "Convenient location"] },
+                    { name: "Sri Balaji Executive Hostel", image: "img7.jpeg", cost: 3200, stars: 4, location: "Madhapur", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Durga Bhavani Hostel", image: "img10.jpeg", cost: 2800, stars: 3, location: "Kukatpally", reviews: ["Serene surroundings", "Great for nature lovers"] },
+                    { name: "RBVRR  Hostel", image: "img8.jpeg", cost: 2500, stars: 3, location: "HITEC City", reviews: ["Breathtaking scenery", "Cozy atmosphere"] },
+                    { name: "Gouda Hostel", image: "hostel1.jpeg", cost: 3200, stars: 4, location: "HITEC City", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Abhishrey Hostel", image: "hostel2.jpeg", cost: 3200, stars: 4, location: "Secunderabad", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Annapurna Hostel", image: "hostel4.jpeg", cost: 3200, stars: 4, location: "Banjara Hills", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Vijayalakshmi working Women Hostel", image: "hostel5.jpeg", cost: 3200, stars: 4, location: "Uppal", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Sri Satya Hostel", image: "hostel6.jpeg", cost: 3200, stars: 4, location: "Narayanaguda", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Ragavendra Hostel", image: "hostel7.jpeg", cost: 3200, stars: 4, location: "Durgam Cheruvu", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Sri Bhavani Hostel", image: "hostel8.jpeg", cost: 3200, stars: 4, location: "Kukatpally", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Mom's Hostel", image: "hostel9.jpeg", cost: 3200, stars: 4, location: "Koti", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Apoorva Hostel", image: "hostel10.jpeg", cost: 3200, stars: 4, location: "Koti", reviews: ["Modern facilities", "Friendly staff"] },
+                    { name: "Sri Sai Executive Womens Hostel", image: "hostel11.jpeg", cost: 3200, stars: 4, location: "Narayanaguda", reviews: ["Modern facilities", "Friendly staff"] }
+                    // Add other hostel data here
+                ];
+    
+                let filteredHostels = hostelData;
+    
+                // Filter by search string
+                filteredHostels = filteredHostels.filter(hostel => {
+                    return hostel.name.toLowerCase().includes(searchString);
+                });
+    
+                // Filter by cost
+                filteredHostels = filteredHostels.filter(hostel => {
+                    return hostel.cost <= cost;
+                });
+    
+                // Filter by location
+                if (selectedLocation !== 'all') {
+                    filteredHostels = filteredHostels.filter(hostel => {
+                        return hostel.location.toLowerCase() === selectedLocation.toLowerCase();
+                    });
+                }
+    
+                displayHostels(filteredHostels);
+            }
+           
+    
+            function displayHostels(hostels) {
+                hostelsContainer.innerHTML = '';
+                hostels.forEach(hostel => {
+                    const hostelDiv = document.createElement('div');
+                    hostelDiv.classList.add('hostel');
+    
+                    const image = document.createElement('img');
+                    image.src = hostel.image;
+                    hostelDiv.appendChild(image);
+    
+                    const details = document.createElement('div');
+                    details.classList.add('details');
+                    details.innerHTML = `<p>${hostel.name}</p><p>${'★'.repeat(hostel.stars)}</p><p>Cost: $${hostel.cost}</p><p>Location: ${hostel.location}</p>`;
+                    hostelDiv.appendChild(details);
+                    
+                    const wishlistButton = document.createElement('button');
+                    wishlistButton.classList.add('wishlist-button');
+                    wishlistButton.textContent = 'Add to Wishlist';
+                    wishlistButton.style.fontSize = '24px'; // Adjust button font size
+                    wishlistButton.style.backgroundColor = 'Yellow'; // Set initial background color
+                    wishlistButton.addEventListener('mouseover', function () {
+                        wishlistButton.style.backgroundColor = '#add8e6'; // Change background color on hover
+                    });
+                    wishlistButton.addEventListener('mouseout', function () {
+                        wishlistButton.style.backgroundColor = 'yellow'; // Reset background color on mouseout
+                    });
+                    wishlistButton.addEventListener('click', function (event) {
+                        event.stopPropagation(); 
+                        addToWishlist(hostel);
+                    });
+                    hostelDiv.appendChild(wishlistButton);
+                    hostelsContainer.appendChild(hostelDiv);
+                });
+            
+
+
+            
+                hostelDiv.addEventListener('click', function () {
+                        // Open corresponding HTML file based on hostel name
+                        window.location.href = hostel.name + '.html';
+                });
+                hostelsContainer.appendChild(hostelDiv);
+                
+            }
+                
+    
+
+            
+            
+            const wishlistItems = new Set();
+            function addToWishlist(hostel) {
+                
+
+                if (wishlistItems.has(hostel)) {
+                    alert('This hostel is already in your wishlist.');
+                } else {
+                    wishlistItems.add(hostel);
+                    updateWishlistModal();
+                }
+            }
+            function updateWishlistModal() {
+                const wishlistContent = document.querySelector('.wishlist-content');
+                let wishlistItemsContainer = wishlistContent.querySelector('.wishlist-items-container');
+                if (!wishlistItemsContainer) {
+                    wishlistItemsContainer = document.createElement('div');
+                    wishlistItemsContainer.classList.add('wishlist-items-container');
+                    wishlistContent.appendChild(wishlistItemsContainer);
+                } else {
+                    wishlistItemsContainer.innerHTML = ''; // Clear the existing content
+                }
+                wishlistItemsContainer.innerHTML = '<h2 style="color: red; font-family: \'Times New Roman\',serif; font-size: 40px;">Hostels in your Wishlist</h2>';
+
+
+                const table = document.createElement('table');
+                table.classList.add('hostel-table');
+                table.style.fontFamily = 'Times New Roman, serif'; // Set font family for the table
+                table.style.color = '#007bff';
+                table.style.fontSize='30px';
+
+
+                // Create table header row
+                const tableHeader = document.createElement('tr');
+                tableHeader.innerHTML =`<th style="color: black;font-size: 30px;text-align:center; ">Name</th>
+                                        <th style="color: black;font-size: 30px;text-align:center;">Location</th>
+                                        <th style="color: black;font-size: 30px;text-align:center;">Price</th>
+                                        <th></th>`;
+
+                // Append header row to the table
+                table.appendChild(tableHeader);
+
+                // Iterate over wishlist items and create table rows
+                wishlistItems.forEach(hostel => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${hostel.name}</td><td>${hostel.location}</td><td>$${hostel.cost}</td>`;
+                    const checkButtonCell = document.createElement('td');
+                    const checkButton = document.createElement('button');
+                    checkButton.textContent = 'Check';
+                    checkButton.style.width = '120px'; // Set the width of the button
+                    checkButton.style.height = '40px';
+                    checkButton.style.fontSize = '20px'; // Set the font size of the button text
+                    checkButton.style.backgroundColor = 'yellow'; // Set the background color of the button
+                    checkButton.style.color = 'black';
+
+                    checkButton.classList.add('check-button');
+                    checkButton.addEventListener('click', function () {
+                        window.location.href = `${hostel.name}.html`;
+                    });
+                    checkButtonCell.appendChild(checkButton);
+                    row.appendChild(checkButtonCell);
+
+                    table.appendChild(row);
+                });
+                wishlistItemsContainer.appendChild(table);
+
+
+
+
+
+                const removeButtons = wishlistItemsContainer.querySelectorAll('.remove-button');
+                removeButtons.forEach((button, index) => {
+                    button.addEventListener('click', function () {
+                        const hostelName = Array.from(wishlistItems)[index].name;
+                        wishlistItems.delete(hostelName);
+                        updateWishlistModal();
+                    });
+                });
+
+            }
+
+            
+
+            
+            function closeWishlist() {
+                const modal = document.getElementById('wishlistModal');
+                modal.style.display = 'none';
+            }
+            
+
+
+            document.getElementById('closeButton').addEventListener('click', closeWishlist);
+            filterHostels();
+        });
+    </script>
+</body>
+
+</html>
